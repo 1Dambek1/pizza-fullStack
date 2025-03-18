@@ -11,7 +11,7 @@ export function Header({className}:{className?:string}) {
             <div className="flex gap-4 items-center">
                 <Image src="/logo.png" alt="logo" width={45} height={45} />
                 <div className="">
-                    <h1 className="text-2xl uppercase font-black">Next Pizza</h1>
+                    <h1 className="text-2xl uppercase font-black">Denis Pizza</h1>
                     <p className="text-sm text-gray-500 leading-3">The best pizza ever</p>
                 </div>
             </div>
