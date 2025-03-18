@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Categories } from "./categories";
-import { SortPopup } from "@/components/shared/sort-popup";
+import { SortPopup } from "@/src/components/shared/sort-popup";
 import { Container } from "./containter";
 
 type props = {

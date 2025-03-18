@@ -1,10 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Title } from "./title";
-import { ProductCard } from "@/components/shared/prodcut-card";
-import {  useEffect, useRef, useTransition } from "react";
+import { ProductCard } from "@/src/components/shared/prodcut-card";
+import {  useEffect, useRef } from "react";
 import {useIntersection} from "react-use"
-import { useCategory } from "@/store/category";
+import { useCategory } from "@/src/store/category";
 interface Props {
     id:number;
     title:string;

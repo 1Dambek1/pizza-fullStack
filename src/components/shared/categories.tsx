@@ -1,6 +1,6 @@
 "use client"
 import { cn } from "@/lib/utils";
-import {  useCategory } from "@/store/category";
+import {  useCategory } from "@/src/store/category";
 import Link from "next/link";
 
 const categories = [{

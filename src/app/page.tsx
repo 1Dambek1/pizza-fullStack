@@ -1,9 +1,8 @@
-import { Container } from "@/components/shared/containter";
-import { Filters } from "@/components/shared/filters";
-import { ProductCard } from "@/components/shared/prodcut-card";
-import { ProductsGroupList } from "@/components/shared/producs-group-list";
-import { Title } from "@/components/shared/title";
-import { TopBar } from "@/components/shared/top-bar";
+import { Container } from "@/src/components/shared/containter";
+import { Filters } from "@/src/components/shared/filters";
+import { ProductsGroupList } from "@/src/components/shared/producs-group-list";
+import { Title } from "@/src/components/shared/title";
+import { TopBar } from "@/src/components/shared/top-bar";
 
 export default function Home() {
   return (
