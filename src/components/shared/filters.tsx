@@ -5,12 +5,14 @@ import { FilterCheckbox } from "./filter-checkbox";
 import { Input } from "../ui/input";
 import { RangeSlider } from "./range-slider";
 import { CheckBoxFilterGroup } from "./checkbox-filters-group";
+import { useFilterIngridients } from "@/src/hooks/useFilterIngridients";
 
 type props = {
   className?: string;
 };
 
 export function Filters({className}: props) {
+  const {items} = useFilterIngridients()
   return (
     <div>
       <div className={cn('flex flex-col gap-4',className)}>
@@ -31,31 +33,8 @@ export function Filters({className}: props) {
       title="Ингридиенты"
       className="mt-5"
       limit={5}
-      defaultItems={[
-        { text: 'Яблоки', value: '1' },
-        { text: 'Сахар', value: '2' },
-        { text: 'Морковь', value: '3' },
-        { text: 'Картофель', value: '4' },
-        { text: 'Чеснок', value: '5' },
-        { text: 'Сметана', value: '6' },
-        { text: 'Перец', value: '7' },
-        { text: 'Борщ', value: '8' },
-        { text: 'Тонкое', value: '3' },
-        { text: 'Традиционное', value: '2' },
-      ]}
-      items={[
-        { text: 'Яблоки', value: '1' },
-        { text: 'Сахар', value: '2' },
-        { text: 'Морковь', value: '3' },
-        { text: 'Картофель', value: '4' },
-        { text: 'Чеснок', value: '5' },
-        { text: 'Сметана', value: '6' },
-        { text: 'Перец', value: '7' },
-        { text: 'Борщ', value: '8' },
-        { text: 'Тонкое', value: '3' },
-        { text: 'Традиционное', value: '2' },
-
-      ]}
+      defaultItems={items.slice(0,6)}
+      items={items}
       />
     </div>
   );

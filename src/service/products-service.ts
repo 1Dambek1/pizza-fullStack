@@ -1,13 +1,16 @@
 import { Product } from "@prisma/client";
-import { API_URL } from "./api-client";
+import { PRODUCTS_API_URL } from "./constants";
 
 
 class Products {
-    private url: string = API_URL + "/products";
+    private url = PRODUCTS_API_URL;
 
     async search(query:string):Promise<Product[]> {
-        const response = await fetch(`${this.url}/search?query=${query}` ,{
+        const url = `${this.url.search}?query=${query}`
+
+        const response = await fetch(url ,{
             method: "GET",
+            next: { revalidate: 0 }
         })
         if(!response.ok){
             throw new Error("Ошибка запроса")

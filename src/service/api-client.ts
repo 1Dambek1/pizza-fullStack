@@ -1,1 +1,11 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import {productsService as products} from "./products-service";
+
+import {ingridientsService as ingridients} from "./ingridients-service";
+
+
+export const api = {
+
+    products,
+    ingridients
+
+}

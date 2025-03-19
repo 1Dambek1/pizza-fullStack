@@ -9,6 +9,7 @@ type props = {
   title:string,
   items:Item[],
   defaultItems:Item[],
+  loading?:boolean,
   limit?:number,
   searchInputPlaceholder?:string,
   onChange?:(values:string[])=>void,
@@ -21,6 +22,7 @@ export function CheckBoxFilterGroup({
   items,
   defaultItems,
   limit =5,
+  loading,
   searchInputPlaceholder = "Поиск...",
   className,
 }: props) {
@@ -30,6 +32,11 @@ export function CheckBoxFilterGroup({
 
   const OnInputChange = (e:ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
+  }
+  if(loading){
+    return <div className={cn('',className)}>
+        <p className="font-bold mb-3">{title}</p>
+      </div>
   }
 
   return (
