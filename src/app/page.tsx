@@ -5,7 +5,7 @@ import { Title } from "@/src/components/shared/title";
 import { TopBar } from "@/src/components/shared/top-bar";
 import { api } from "../service/api-client";
 export default async function Home() {
-
+ 
   const categories = await api.products.filter()
  
   return (
