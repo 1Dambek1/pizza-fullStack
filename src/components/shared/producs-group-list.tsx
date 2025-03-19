@@ -29,9 +29,9 @@ export function ProductsGroupList({ id,title, products, categoryId, listClassNam
         }
     }, [intersection, intersection?.isIntersecting, title,categoryId, setActiveId]);
     return (
-    <div id={id} ref = {intersectionRef} className={className}>
+    <div id={title} ref = {intersectionRef} className={cn("mb-20",className)}>
 
-        <Title text={title} size="lg" className="font-extrabold mb-5"/>
+        <Title text={title} size="lg" className="font-extrabold mb-10"/>
         <div className={cn("grid grid-cols-3 gap-[50px]",listClassName)}>
             {products.map((product) => (
                 <ProductCard

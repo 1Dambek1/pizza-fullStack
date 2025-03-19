@@ -1,43 +1,46 @@
 "use client"
-import { cn } from "@/lib/utils";
-import { Title } from "./title";
-import { FilterCheckbox } from "./filter-checkbox";
 import { Input } from "../ui/input";
 import { RangeSlider } from "./range-slider";
 import { CheckBoxFilterGroup } from "./checkbox-filters-group";
-import { useFilterIngridients } from "@/src/hooks/useFilterIngridients";
-import { useState } from "react";
-import { useSet } from "react-use";
+import { useIngidients } from "@/src/hooks/use-ingidients";
+import { useFilterState } from "@/src/hooks/use-filter-state";
+import { useQueryFilters } from "@/src/hooks/use-query-filters";
 
 type props = {
   className?: string;
 };
 
-interface PriceRange {
-  priceFrom: number;
-  priceTo: number;
-}
+
 
 export function Filters({className}: props) {
-  const {items, loading, onAddId, selectedIds} = useFilterIngridients()
-  const [sizes, {toggle:toggleSize}] = useSet(new Set<string>([]))
+  const {items, loading} = useIngidients()
+  const filters = useFilterState()
+  useQueryFilters(filters)
 
 
-  const [price, setPrice] = useState<PriceRange>({priceFrom:0, priceTo:1000})
-  const UpdatePrice = (name: keyof PriceRange, value: number) => {
-    setPrice({
-      ...price,
-      [name]: value,
-    })
-  } 
-  return (
-    <div>
+
+
+    return (
+    <div className={className}>
+
+      <CheckBoxFilterGroup
+        title="Тип теста"
+        name="pizzaTypes"
+        className="mb-5"
+        onClickCheckBox={filters.toggleType}
+        selectedIds={filters.pizzaTypes}
+        items={[
+          { text: 'Тонкое', value: '1' },
+          { text: 'Традиционное', value: '2' },
+        ]}
+      />
+
       <CheckBoxFilterGroup
         title="Размеры"
         name="sizes"
         className="mb-5"
-        onClickCheckBox={toggleSize}
-        selectedIds={sizes}
+        onClickCheckBox={filters.toggleSize}
+        selectedIds={filters.sizes}
         items={[
           { text: '20 см', value: '20' },
           { text: '30 см', value: '30' },
@@ -47,11 +50,11 @@ export function Filters({className}: props) {
       <div className="mt-5 border-y border-y-neutral-10 py-6 pb-7">
         <p>Цена от и до</p>
       <div className="flex mb-5 gap-3">
-        <Input type="number" placeholder="0" min={0} max={100} value={String(price.priceFrom)} onChange={(e) => UpdatePrice('priceFrom', Number(e.target.value))} />
-        <Input type="number" placeholder="1000" min={100} max={100}  value={String(price.priceTo)} onChange={(e) => UpdatePrice('priceTo', Number(e.target.value))} />
+        <Input type="number" placeholder="0" min={0} max={1000} value={String(filters.price.priceFrom)} onChange={(e) => filters.UpdatePrice('priceFrom', Number(e.target.value))} />
+        <Input type="number" placeholder="1000" min={0} max={1000}  value={String(filters.price.priceTo)} onChange={(e) => filters.UpdatePrice('priceTo', Number(e.target.value))} />
       </div>
-      <RangeSlider min={0} max={100} step={1} value={[price.priceFrom, price.priceTo]} 
-        onValueChange={([priceFrom,priceTo]) => setPrice({priceFrom:priceFrom, priceTo:priceTo})}
+      <RangeSlider min={0} max={1000} step={10} value={[filters.price.priceFrom || 0, filters.price.priceTo || 1000]} 
+        onValueChange={([priceFrom,priceTo]) => filters.setPrice({priceFrom:priceFrom, priceTo:priceTo})}
       />
 
       </div>
@@ -62,8 +65,8 @@ export function Filters({className}: props) {
       defaultItems={items.slice(0,6)}
       items={items}
       loading={loading}
-      onClickCheckBox={onAddId}
-      selectedIds={selectedIds}
+      onClickCheckBox={filters.toggleIngridient}
+      selectedIds={filters.selectedIngridients}
       name="ingridnients"
       />
     </div>

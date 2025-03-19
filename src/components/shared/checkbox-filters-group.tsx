@@ -9,7 +9,7 @@ type Item = FilterChecboxProps
 type props = {
   title:string,
   items:Item[],
-  defaultItems:Item[],
+  defaultItems?:Item[],
   loading?:boolean,
   limit?:number,
   selectedIds?:Set<string>,
@@ -34,7 +34,9 @@ export function CheckBoxFilterGroup({
 }: props) {
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState(""); 
-  const list = showAll ? items.filter((item)=> item.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) : defaultItems.slice(0, limit);
+  const list = showAll 
+  ? items.filter((item)=> item.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) 
+  : (defaultItems || items).slice(0, limit);
 
   const OnInputChange = (e:ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);

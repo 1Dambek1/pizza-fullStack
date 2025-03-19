@@ -9,7 +9,6 @@ class  Ingridients {
   
           const response = await fetch(url ,{
               method: "GET",
-              next: { revalidate: 10000 }
           })
           if(!response.ok){
               throw new Error("Ошибка запроса")
