@@ -1,10 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Title } from "./title";
-import { ProductCard } from "@/src/components/shared/prodcut-card";
+import { ProductCard } from "@/src/shared/components/shared/prodcut-card";
 import {  useEffect, useRef } from "react";
 import {useIntersection} from "react-use"
-import { useCategory } from "@/src/store/category";
+import { useCategory } from "@/src/shared/store/category";
 import { Product } from "@prisma/client";
 interface Props {
     id:number;

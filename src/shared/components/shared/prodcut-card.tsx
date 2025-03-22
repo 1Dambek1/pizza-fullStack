@@ -21,7 +21,7 @@ export function ProductCard({
 }: props) {
   return (
     <div className={cn('',className)} key={id}>
-        <Link href={"/product/1"}>
+        <Link href={`/product/${id}`}>
             <div className="flex justify-center p-6 bg-secondary rounded-lg h-[260px]">
                 <img src={imageURL} className="h-[215px] w-[215px]" alt="product" />
             </div>

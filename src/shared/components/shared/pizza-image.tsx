@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 type props = {
   className?: string;
   imageURL: string;
-  size: PizzaSize;
+  size: 20 | 30 | 40;
 };
 
-export function ProductImage({
+export function PizzaImage({
     className,
     imageURL,
     size,

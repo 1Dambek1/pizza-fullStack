@@ -2,9 +2,9 @@
 import { Input } from "../ui/input";
 import { RangeSlider } from "./range-slider";
 import { CheckBoxFilterGroup } from "./checkbox-filters-group";
-import { useIngidients } from "@/src/hooks/use-ingidients";
-import { useFilterState } from "@/src/hooks/use-filter-state";
-import { useQueryFilters } from "@/src/hooks/use-query-filters";
+import { useIngidients } from "@/src/shared/hooks/use-ingidients";
+import { useFilterState } from "@/src/shared/hooks/use-filter-state";
+import { useQueryFilters } from "@/src/shared/hooks/use-query-filters";
 
 type props = {
   className?: string;

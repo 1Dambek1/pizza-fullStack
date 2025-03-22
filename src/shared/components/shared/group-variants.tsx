@@ -10,14 +10,14 @@ type Variant = {
 type props = {
     variants: readonly Variant[];
     className?: string;
-    onclick?: (value: Variant['value']) => void;
+    onChange?: (value: Variant['value']) => void;
     selectedValue?: Variant['value'];
 };
 
 export function GroupVariants({
     variants,
     className,
-    onclick,
+    onChange,
     selectedValue,
 }: props) {
   return (
@@ -26,7 +26,7 @@ export function GroupVariants({
             variants.map((variant) => (
                 <button 
                 key={variant.name} 
-                onClick={()=> onclick?.(variant.value)}
+                onClick={()=> onChange?.(variant.value)}
                 className={cn("flex items-center justify-center cursor-pointer h-[30px] px-5 flex-1 rounded-3xl transition-all duration-400 text-sm",
                     {
                         "bg-white shadow" : variant.value === selectedValue,

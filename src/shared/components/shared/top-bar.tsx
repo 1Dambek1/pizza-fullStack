@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Categories } from "./categories";
-import { SortPopup } from "@/src/components/shared/sort-popup";
+import { SortPopup } from "@/src/shared/components/shared/sort-popup";
 import { Container } from "./containter";
 import { Category } from "@prisma/client";
 

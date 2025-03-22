@@ -1,13 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
-import "../globals.css";
-import { Header } from "@/src/components/shared/header";
-
-const nunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["cyrillic"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-})
+import { Header } from "@/src/shared/components/shared/header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,20 +8,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${nunito.variable} antialiased`}
-      > 
+
       <main className = "min-h-screen"  >
         <Header/>
       {children}
-
+      {modal}
       </main>
-      </body>
-    </html>
+
   );
 }

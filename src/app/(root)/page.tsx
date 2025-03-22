@@ -1,9 +1,8 @@
-import { Container } from "@/src/components/shared/containter";
-import { Filters } from "@/src/components/shared/filters";
-import { ProductsGroupList } from "@/src/components/shared/producs-group-list";
-import { Title } from "@/src/components/shared/title";
-import { TopBar } from "@/src/components/shared/top-bar";
-import { api } from "../../service/api-client";
+import { Container } from "@/src/shared/components/shared/containter";
+import { Filters } from "@/src/shared/components/shared/filters";
+import { ProductsGroupList } from "@/src/shared/components/shared/producs-group-list";
+import { Title } from "@/src/shared/components/shared/title";
+import { TopBar } from "@/src/shared/components/shared/top-bar";
 import { prisma } from "@/prisma/prisma";
 
 export default async function Home() {
