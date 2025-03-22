@@ -12,6 +12,12 @@
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
+  "eslintConfig": {
+    "extends": "next",
+    "rules": {
+      "@next/next/no-img-element": "off"
+        }
+  },
   "dependencies": {
     "@prisma/client": "^5.13.0",
     "@radix-ui/react-checkbox": "^1.1.4",
@@ -42,16 +48,20 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.22.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.17.24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9",
+    "eslint": "^9.22.0",
     "eslint-config-next": "15.2.1",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^16.0.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.27.0"
   }
 }

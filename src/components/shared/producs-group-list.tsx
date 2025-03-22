@@ -5,11 +5,12 @@ import { ProductCard } from "@/src/components/shared/prodcut-card";
 import {  useEffect, useRef } from "react";
 import {useIntersection} from "react-use"
 import { useCategory } from "@/src/store/category";
+import { Product } from "@prisma/client";
 interface Props {
     id:number;
     title:string;
 
-    products: [];
+    products: Product[];
     
     categoryId:number;
 

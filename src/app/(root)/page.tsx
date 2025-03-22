@@ -3,10 +3,21 @@ import { Filters } from "@/src/components/shared/filters";
 import { ProductsGroupList } from "@/src/components/shared/producs-group-list";
 import { Title } from "@/src/components/shared/title";
 import { TopBar } from "@/src/components/shared/top-bar";
-import { api } from "../service/api-client";
+import { api } from "../../service/api-client";
+import { prisma } from "@/prisma/prisma";
+
 export default async function Home() {
  
-  const categories = await api.products.filter()
+  const categories = await prisma.category.findMany({
+          include: {
+            products:{
+              include: {
+                ingredients:true,
+                items:true
+              }
+            }
+          }
+        })
  
   return (
    <div className="">
