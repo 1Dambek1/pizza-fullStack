@@ -7,7 +7,7 @@ type props = {
     product:IProduct
   className?: string;
 };
-
+ 
 export function ProductForm({className,product}: props) {
  const stateCart = useCart(state => state)
     
