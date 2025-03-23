@@ -11,8 +11,8 @@ type props = {
 
 export function TopBar({className, categories}: props) {
   return (
-    <div className={cn(' top-0 left-0 z-2 sticky z-30 opacity-100 w-full h-full bg-white shadow-lg shadow-gray-200 py-5 px-5 rounded-2xl', className)}>
-      <Container>
+    <div className={cn(' top-0 left-0  sticky z-30 opacity-100 w-full h-full  bg-white shadow-lg shadow-gray-200 py-5 px-5 rounded-2xl', className)}>
+      <Container className="flex  justify-between items-center">
           <Categories items={categories} />
           <SortPopup/>
       </Container>

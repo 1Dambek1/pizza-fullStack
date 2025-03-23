@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Title } from "./title";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
+import { Ingredient } from "@prisma/client";
 
 type props = {
   id:number,
@@ -10,6 +11,7 @@ type props = {
   price:number,
   imageURL:string,
   className?: string;
+  ingridients?:Ingredient[];
 };
 
 export function ProductCard({
@@ -17,7 +19,8 @@ export function ProductCard({
     name,
     price,
     imageURL,
-    className
+    className,
+    ingridients
 }: props) {
   return (
     <div className={cn('',className)} key={id}>
@@ -27,7 +30,11 @@ export function ProductCard({
             </div>
             <Title text={name} size="sm" className=" font-bold" />
             <p className="text-sm text-gray-400">
-                Цыпленка с овощами, сыром, молоком и т.д.
+                {ingridients?.slice(0,4).map((ingredient)=>(
+                    <span key={ingredient.id}>{ingredient.name.toLocaleLowerCase()}, </span> 
+                ))}
+               
+                {ingridients && ingridients.length>0 &&  <span>...</span> } 
             </p>
             <div className="flex justify-between items-centermt-4">
                 <span className="text-[20px]">

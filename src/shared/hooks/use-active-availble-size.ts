@@ -13,6 +13,7 @@ interface ReturnProps{
     selectedIngridients:Set<number>;
     addIngridient:(ingridient:number)=>void;
     availablePizza:Variant[];
+    currentItemId?:number;
 }
 
 
@@ -22,6 +23,7 @@ export function usePizzaOptions(items:ProductItem[]):ReturnProps {
     const [selectedIngridients, {toggle:addIngridient}] = useSet(new Set<number>([]))
     const availablePizza = getAvailablePizza(pizzaType, size, items)
     
+    const currentItemId = items.find((item)=>item.pizzaType === pizzaType && item.size === size)?.id
     useEffect(()=>{
     
         if(availablePizza.find((item)=> item.disabled && Number(item.value) === size)){
@@ -36,5 +38,5 @@ export function usePizzaOptions(items:ProductItem[]):ReturnProps {
     
     }
       },[pizzaType])
-    return {pizzaType, size, setPizzaType, setSize,selectedIngridients,addIngridient,availablePizza}
+    return {pizzaType, size, setPizzaType, setSize,selectedIngridients,addIngridient,availablePizza,currentItemId}
 }

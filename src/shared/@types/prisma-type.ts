@@ -5,3 +5,5 @@ export type IProduct = Product & {
     ingredients:Ingredient[];
     items:ProductItem[];
 }
+
+

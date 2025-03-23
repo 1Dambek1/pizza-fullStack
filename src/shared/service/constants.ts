@@ -9,3 +9,8 @@ const INGRIDIENTS_PREFIX = "/ingridients"
 export const INGRIDIENTS_API_URL = {
     getIngridients: `${API_URL}${INGRIDIENTS_PREFIX}`
 }
+
+const CART_PREFIX = "/cart"
+export const CART_API_URL = {
+    Cart: `${API_URL}${CART_PREFIX}`
+}

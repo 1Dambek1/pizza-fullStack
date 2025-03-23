@@ -5,7 +5,9 @@ import { Button } from "../ui/button";
 type props = {
     imgURL:string;
     name:string;
-    onclickAddToCart:()=>void;
+    price:number;
+    onSubmit?: ()=>void;
+    loading:boolean;
     className?: string;
 };
 
@@ -13,10 +15,10 @@ export function ChooseProductForm({
   className,
   imgURL,
   name,
-  onclickAddToCart
+  price,
+  onSubmit,
+  loading
 }: props) {
-    const totalPrice = 400
-    const textDetails = "Цыпленка с овощами, сыром, молоком и т.д."
   return (
     <div className={cn('flex flex-1',className)}>
           <div className={cn('relative flex items-center justify-center flex-1 w-full',className)}>
@@ -31,12 +33,13 @@ export function ChooseProductForm({
 
       </div>
 
-        <div className="w-[490px] bg-[#f7f6f5] p-7">
+        <div className="w-[490px] bg-[#f7f6f5] p-7 flex flex-col justify-between items-center">
             <Title text={name} size="md" className="font-extrabold mb-1" />
-            <p className="text-gray-400"> {textDetails}</p>
             <Button
+            loading={loading}
+            onClick={onSubmit}
             className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
-                Добавить в корзину за {totalPrice} руб.
+                Добавить в корзину за {price} руб.
             </Button>
         </div>
 

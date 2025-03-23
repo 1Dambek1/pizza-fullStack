@@ -14,8 +14,9 @@ type props = {
     name:string;
     ingredients:Ingredient[];
     items:ProductItem[];
-    onclickAddToCart:VoidFunction;
     className?: string;
+    loading:boolean;
+    onSubmit:(itemId:number,ingridientsIds:number[])=>void;
 };
 
 export function ChoosePizzaForm({
@@ -23,22 +24,20 @@ export function ChoosePizzaForm({
   imgURL,
   name,
   ingredients,
+  loading,
   items,
-  onclickAddToCart
+  onSubmit
 }: props) {
 
-  const {pizzaType, size, setPizzaType, setSize, selectedIngridients, addIngridient, availablePizza} = usePizzaOptions(items)
+  const {pizzaType, size, setPizzaType, setSize, selectedIngridients, addIngridient, availablePizza, currentItemId} = usePizzaOptions(items)
 
   const {totalPrice, textDetails} = getPizzaDetails(items, ingredients, pizzaType, size, selectedIngridients)
 
   const handleClickAddToCart = () => {
-    onclickAddToCart()
-    console.log({
-      size,
-      pizzaType,
-      selectedIngridients,
+    if (currentItemId){
+      onSubmit(currentItemId,Array.from(selectedIngridients))
+    }
 
-    })
   }
 
   return (
@@ -76,6 +75,7 @@ export function ChoosePizzaForm({
               </div>
         </div>
             <Button
+            loading={loading}
             onClick={handleClickAddToCart}
             className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
                 Добавить в корзину за {totalPrice} руб.

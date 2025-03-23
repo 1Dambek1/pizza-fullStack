@@ -5,12 +5,14 @@ import { ProductCard } from "@/src/shared/components/shared/prodcut-card";
 import {  useEffect, useRef } from "react";
 import {useIntersection} from "react-use"
 import { useCategory } from "@/src/shared/store/category";
-import { Product } from "@prisma/client";
+import { IProduct } from "../../@types/prisma-type";
+// TODO переделать
+
 interface Props {
     id:number;
     title:string;
 
-    products: Product[];
+    products: IProduct[];
     
     categoryId:number;
 
@@ -18,9 +20,9 @@ interface Props {
     className?: string;
 };
 
-export function ProductsGroupList({ id,title, products, categoryId, listClassName, className }: Props) {
+export function ProductsGroupList({ title, products, categoryId, listClassName, className }: Props) {
     const setActiveId = useCategory((state) => state.setActiveId);
-    const intersectionRef = useRef(null)
+    const intersectionRef:any = useRef(null)
     const intersection = useIntersection(intersectionRef,{
         threshold: 0.4,
     })
@@ -41,6 +43,7 @@ export function ProductsGroupList({ id,title, products, categoryId, listClassNam
                     name={product.name}
                     price={product.items[0].price}
                     imageURL={product.imageURL}
+                    ingridients= {product.ingredients}
                     />
             ))}
 

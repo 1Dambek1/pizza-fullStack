@@ -1,52 +1,69 @@
 import { prisma } from "@/prisma/prisma";
+import { ChoosePizzaForm } from "@/src/shared/components/shared/choose-pizza-form";
+import { ChooseProductForm } from "@/src/shared/components/shared/choose-product-form";
 import { Container } from "@/src/shared/components/shared/containter";
 import { GroupVariants } from "@/src/shared/components/shared/group-variants";
 import { PizzaImage } from "@/src/shared/components/shared/pizza-image";
 import { Title } from "@/src/shared/components/shared/title";
-import { notFound } from "next/navigation";
+import { useCart } from "@/src/shared/store/cart";
+import { notFound, useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-type props = {
-  params:{
-    id:string
-  }
-};
 
-export default async function Page({params}: props) {
+
+export default async function Page({params}: {params:Promise<{id:string}>}) {
 const {id} = await params
-const data = await prisma.product.findUnique({
+
+const product = await prisma.product.findUnique({
   where:{
     id:Number(id)
   },
   include:{
-    category:true,
-    items:true
+    items:true,
+    category:{
+      include:{
+        products:{
+          include:{
+            items:true
+          }
+        }
+      }
+    },
+    ingredients:true
   }
 })
-if (!data){
+if (!product){
   return notFound()
 }
+
+
   return (
     <Container className="flex flex-col my-10">
     <div className="flex flex-1">
-      <PizzaImage size={40} imageURL={data.imageURL} className="" />
-      <div className="w-[490px] bg-[#FCFCFC] p-7">
-        <Title text={data.name} size="md" className="font-extrabold mb-1" />
-        <p className="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium autem in voluptates labore earum dignissimos? Deserunt, illo? Cupiditate iste distinctio et? Doloribus obcaecati illo ab excepturi. Sint soluta quam eveniet?</p>
-        <GroupVariants variants={[
-          {
-            name: "Small",
-            value: "1",
-          },
-          {
-            name: "Medium",
-            value: "2",
-          },
-          {
-            name: "Large",
-            value: "3",
-          }
-        ]} selectedValue={"2"} className="mt-5" />
-      </div>
+      {
+               isPizzaForm ? (
+                 <ChoosePizzaForm 
+                 items={product.items} 
+                 name={product.name} 
+                 ingredients={product.ingredients} 
+                 imgURL={product.imageURL} 
+                 onSubmit={onSubmit}
+                 loading={stateCart.loading}
+                 />
+               )
+               : (
+                 <ChooseProductForm 
+                 name={product.name} 
+                 imgURL={product.imageURL} 
+                 onSubmit={onSubmit} 
+                 price={firstItem.price}
+                 loading={stateCart.loading}
+     
+                 />
+                 
+               )
+             }
+     
     </div>
     </Container>
   );
