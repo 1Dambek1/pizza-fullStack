@@ -7,7 +7,6 @@ import 'react-dadata/dist/react-dadata.css';
 interface Props {
   onChange?: (value?: string) => void;
 }
-
 export const AdressInput: React.FC<Props> = ({ onChange }) => {
   
   return (
