@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { CartState, useCart } from "../store/cart";
 import { cart } from "../service/cart-service";
 
@@ -27,9 +27,11 @@ export const useDataCart = ():ReturnProps=>{
         cartState.updateItemQuantity(id,newQuantity)
       }
 
-      return {
-        cartState,
-        onClickCountButton,
-        onClickRemoveItem
-      }
+      return useMemo(()=>{
+        return {
+          cartState,
+          onClickCountButton,
+          onClickRemoveItem
+        }
+      },[cartState])
 }

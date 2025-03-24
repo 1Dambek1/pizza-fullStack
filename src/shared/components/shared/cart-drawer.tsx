@@ -1,3 +1,4 @@
+"use client"
 import { 
     Sheet,
     SheetContent,
@@ -10,7 +11,6 @@ import {
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
-import { useCart } from "../../store/cart";
 import { ReactNode, useEffect } from "react";
 import { CartDrawerItem } from "./cart-drawer-item";
 import { getCartItemsDetails } from "@/lib/get-cart-item-details";
