@@ -25,10 +25,7 @@ export function Header({className, hasSearch=true, hasCart=true}: {className?:st
                 <SearchInput />
             </div>}
             <div className="flex items-center gap-3">
-                <Button variant="outline" className="flex  items-center gap-3">
-                    <User size={16} />
-                    Log In
-                </Button>
+
 {hasCart &&                <div className="">
                     <CartButton/>
 

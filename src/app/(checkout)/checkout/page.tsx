@@ -1,14 +1,7 @@
 "use client"
-import { getCartItemsDetails } from "@/lib/get-cart-item-details";
-import { CheckoutItem } from "@/src/shared/components/shared/checkout-item";
 import { CheckoutSideBar } from "@/src/shared/components/shared/checkout-sidebar";
 import { Container } from "@/src/shared/components/shared/containter";
-import { FormInput } from "@/src/shared/components/shared/form-components/form-input";
 import { Title } from "@/src/shared/components/shared/title";
-import { WhiteBlock } from "@/src/shared/components/shared/white-block";
-import { Input } from "@/src/shared/components/ui/input";
-import { Textarea } from "@/src/shared/components/ui/textarea";
-import { PizzaSizeType, PizzaTypeType } from "@/src/shared/constants/pizza";
 import { useDataCart } from "@/src/shared/hooks/use-cart";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -16,6 +9,7 @@ import { CheckOutCart } from "@/src/shared/components/shared/checkout/checkout-c
 import { CheckOutPersonal } from "@/src/shared/components/shared/checkout/checkout-personal";
 import { CheckOutAddress } from "@/src/shared/components/shared/checkout/checkout-address";
 import { CheckoutFormSchema, checkoutFormSchema } from "@/src/shared/components/shared/checkout/schemas/checkout-form-schema";
+import toast from "react-hot-toast";
 export default function Page() {
   const {cartState,onClickCountButton, onClickRemoveItem } = useDataCart()
 
@@ -33,6 +27,7 @@ export default function Page() {
   })
   const onSubmit =  (data:CheckoutFormSchema) =>{
     console.log(data)
+    toast.success("Заказ оформлен! Переход на оплату...")
   }
   
   return (
