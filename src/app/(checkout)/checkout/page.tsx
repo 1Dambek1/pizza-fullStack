@@ -40,7 +40,7 @@ export default function Page() {
   const onSubmit =  async (data:CheckoutFormSchema) =>{
     try {
       setSubmmiting(true)
-      const url = await createOrder(data)
+      await createOrder(data)
       // toast.success("Заказ оформлен! Переход на оплату...")
 
       router.push("/")

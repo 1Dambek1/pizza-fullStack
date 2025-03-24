@@ -37,6 +37,6 @@ export function usePizzaOptions(items:ProductItem[]):ReturnProps {
     
     
     }
-      },[pizzaType])
+      },[pizzaType, availablePizza, size])
     return {pizzaType, size, setPizzaType, setSize,selectedIngridients,addIngridient,availablePizza,currentItemId}
 }

@@ -1,15 +1,11 @@
-"use client"
 import Image from "next/image";
 import { Container } from "./containter";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
-import { ProfileButton } from "./profile-button";
-import { useCart } from "../../store/cart";
 
 export function Header({className, hasSearch=true, hasCart=true}: {className?:string, hasSearch?:boolean, hasCart?:boolean}) {
- const cartState = useCart(state => state)    
   return (
     <header className={cn("border border-b", className)}>
         <Container className="flex items-center justify-between py-8">

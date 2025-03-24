@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { CartState, useCart } from "../store/cart";
+import { cart } from "../service/cart-service";
 
 interface ReturnProps {
     cartState:CartState,
@@ -15,7 +16,7 @@ export const useDataCart = ():ReturnProps=>{
         } 
         fetchData()
       }
-      ,[])
+      ,[cartState])
     
       const onClickRemoveItem = (id:number)=>{
         cartState.removeCartItem(id)

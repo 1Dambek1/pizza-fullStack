@@ -71,6 +71,6 @@ export function useFilterState():ReturnProps {
     toggleIngridient,
     toggleSize,
     toggleType,
-  }), [sizes, pizzaTypes, selectedIngridients, price])
+  }), [sizes, pizzaTypes, selectedIngridients, price, setPrice, toggleIngridient, toggleSize, toggleType])
 
 }
