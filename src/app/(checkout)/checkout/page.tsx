@@ -3,7 +3,7 @@ import { CheckoutSideBar } from "@/src/shared/components/shared/checkout-sidebar
 import { Container } from "@/src/shared/components/shared/containter";
 import { Title } from "@/src/shared/components/shared/title";
 import { useDataCart } from "@/src/shared/hooks/use-cart";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider,  useForm } from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import { CheckOutCart } from "@/src/shared/components/shared/checkout/checkout-cart";
 import { CheckOutPersonal } from "@/src/shared/components/shared/checkout/checkout-personal";

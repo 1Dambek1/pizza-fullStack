@@ -3,6 +3,7 @@ import { CheckoutItemsDetails } from "./checkout-items-details";
 import { WhiteBlock } from "./white-block";
 import { Button } from "../ui/button";
 import { DEL, DELIVERY } from "../../constants/checkout";
+import { Skeleton } from "../ui/skeleton";
 
 type props = {
   totalAmount: number;
@@ -18,7 +19,7 @@ export function CheckoutSideBar({totalAmount, loading}: props) {
     <WhiteBlock className="sticky top-4 p-6">
     <div className="flex flex-col gap-2">
       <span className="text-xl ">Итого:</span>
-      <span className="text-4xl font-extrabold "> {totalPrice} ₽</span>
+      {loading ?<Skeleton className="w-28 h-11" /> :<span className="text-4xl font-extrabold "> {totalPrice} ₽</span>}
     </div>
 
 
@@ -28,14 +29,14 @@ export function CheckoutSideBar({totalAmount, loading}: props) {
     Стоимость товаров
     
     </div>
-    } value={String(totalAmount)} />
+    } value={ loading ? <Skeleton className="w-12 h-7" /> : String(totalAmount)} />
   <CheckoutItemsDetails title={
     <div className="flex items-center">
     <Percent className="mr-2 text-gray-400" size={16} />
     Налоги
     
     </div>
-    } value={String(vatPrice)} />
+    } value={ loading ? <Skeleton className="w-12 h-7" /> : String(vatPrice)} />
     <CheckoutItemsDetails title={
     <div className="flex items-center">
     <Car className="mr-2 text-gray-400" size={16} />

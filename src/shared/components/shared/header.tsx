@@ -1,14 +1,11 @@
 import Image from "next/image";
 import { Container } from "./containter";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
-import { User } from "lucide-react";
 import Link from "next/link";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 
 export function Header({className, hasSearch=true, hasCart=true}: {className?:string, hasSearch?:boolean, hasCart?:boolean}) {
-  
   return (
     <header className={cn("border border-b", className)}>
         <Container className="flex items-center justify-between py-8">
@@ -25,7 +22,6 @@ export function Header({className, hasSearch=true, hasCart=true}: {className?:st
                 <SearchInput />
             </div>}
             <div className="flex items-center gap-3">
-
 {hasCart &&                <div className="">
                     <CartButton/>
 
