@@ -1,12 +1,11 @@
 "use server"
 import { prisma } from "@/prisma/prisma";
 import { CheckoutFormSchema } from "../shared/components/shared/checkout/schemas/checkout-form-schema";
-import { OrderStatus, Prisma } from "@prisma/client";
+import { OrderStatus } from "@prisma/client";
 import { cookies } from "next/headers";
 import { sendEmail } from '@/lib/send-email';
 import { PayOrderTemplate } from '../shared/components/shared/email-temapltes/pay-order';
 import { OrderSuccessTemplate } from '../shared/components/shared/email-temapltes/order-success';
-import { hashSync } from 'bcryptjs';
 
 export async function createOrder(data:CheckoutFormSchema) {
     try{

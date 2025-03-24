@@ -16,7 +16,7 @@ export const useDataCart = ():ReturnProps=>{
         } 
         fetchData()
       }
-      ,[cartState])
+      ,[])
     
       const onClickRemoveItem = (id:number)=>{
         cartState.removeCartItem(id)

@@ -23,7 +23,7 @@ export default function Layout({
         className={`${nunito.variable} antialiased`}
       > 
         {children}
-    <Toaster/>
+        <Toaster/>
 
       </body>
     </html>
