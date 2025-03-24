@@ -6,7 +6,7 @@ const nunito = Nunito({
   subsets: ["cyrillic"],
   weight: ["400", "500", "600", "700", "800", "900"],
 })
-
+  
 
 export default function Layout({
   children,
