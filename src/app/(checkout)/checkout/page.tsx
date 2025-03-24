@@ -16,8 +16,14 @@ import { CheckOutCart } from "@/src/shared/components/shared/checkout/checkout-c
 import { CheckOutPersonal } from "@/src/shared/components/shared/checkout/checkout-personal";
 import { CheckOutAddress } from "@/src/shared/components/shared/checkout/checkout-address";
 import { CheckoutFormSchema, checkoutFormSchema } from "@/src/shared/components/shared/checkout/schemas/checkout-form-schema";
+import { createOrder } from "../../actions";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 export default function Page() {
   const {cartState,onClickCountButton, onClickRemoveItem } = useDataCart()
+  const [submmiting, setSubmmiting] = useState(false)
+  const router = useRouter()
 
   const form = useForm<CheckoutFormSchema>({
     resolver: zodResolver(checkoutFormSchema),
@@ -31,8 +37,22 @@ export default function Page() {
       comment: '',
     },
   })
-  const onSubmit =  (data:CheckoutFormSchema) =>{
-    console.log(data)
+  const onSubmit =  async (data:CheckoutFormSchema) =>{
+    try {
+      setSubmmiting(true)
+      const url = await createOrder(data)
+      // toast.success("Заказ оформлен! Переход на оплату...")
+
+      router.push("/")
+      toast.success("Заказ успешно оплачен!", {duration:3000})
+
+    }catch (e) {
+      console.log(e)
+
+      setSubmmiting(false)
+    }finally{
+      setSubmmiting(false)
+    }
   }
   
   return (
@@ -53,7 +73,7 @@ export default function Page() {
         <div className="">
   
           <div className="w-[450px] ">
-                <CheckoutSideBar loading={cartState.loading} totalAmount={cartState.totalAmount} />
+                <CheckoutSideBar submmiting={submmiting} loading={cartState.loading} totalAmount={cartState.totalAmount} />
           </div>
         </div>
   

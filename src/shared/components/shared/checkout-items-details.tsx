@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 type props = {
     title:ReactNode
-    value:string
+    value:ReactNode
     className?: string;
 };
 
@@ -14,7 +14,7 @@ export function CheckoutItemsDetails({className, title, value}: props) {
                   {title}:
                   <div className="font-bold text-lg" />
                 </span>
-                <span className="font-bold text-lg"> {value} ₽  </span>
+                <span className="font-bold text-lg flex"> {value} ₽  </span>
 
             </div>
   );
