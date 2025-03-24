@@ -7,7 +7,7 @@ import Link from "next/link";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 
-export function Header({className}:{className?:string}) {
+export function Header({className, hasSearch=true, hasCart=true}: {className?:string, hasSearch?:boolean, hasCart?:boolean}) {
   
   return (
     <header className={cn("border border-b", className)}>
@@ -21,18 +21,18 @@ export function Header({className}:{className?:string}) {
                     </div>
                 </div>
             </Link>
-            <div className="mx-10 flex-1">
+{hasSearch &&            <div className="mx-10 flex-1">
                 <SearchInput />
-            </div>
+            </div>}
             <div className="flex items-center gap-3">
                 <Button variant="outline" className="flex  items-center gap-3">
                     <User size={16} />
                     Log In
                 </Button>
-                <div className="">
+{hasCart &&                <div className="">
                     <CartButton/>
 
-                </div>
+                </div>}
             </div>
 
         </Container>
