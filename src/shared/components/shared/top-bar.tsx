@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils";
 import { Categories } from "./categories";
 import { SortPopup } from "@/src/shared/components/shared/sort-popup";

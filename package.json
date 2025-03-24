@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+  "dev": "NEXT_USE_TURBOPACK=0 next dev",
+  "build": "NEXT_USE_TURBOPACK=0 next build",
     "start": "next start",
     "lint": "next lint",
     "prisma:seed": "prisma db seed",
